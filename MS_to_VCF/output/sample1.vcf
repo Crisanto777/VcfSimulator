@@ -1,2 +1,43 @@
 ##fileformat=VCFv4.0
-##filedate=20160315##reference=simulated data
+##filedate=20160315
+##reference=simulated data
+##phasing=phased
+##FILTER=<ID=q10,Description="Quality below 10">
+##FILTER=<ID=s50,Description="Less than 50% of samples have data">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+##FORMAT=<ID=HQ,Number=2,Type=Integer,Description="Haplotype Quality">
+#CHROM POS    ID    REF ALT    QUAL FILTER INFO    FORMAT	NA0001
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|0:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	1|1:48:1:51,51
+1541	5	whatever	A	G	99	PASS	.	GT:GQ:DP:HQ	0|1:48:1:51,51
