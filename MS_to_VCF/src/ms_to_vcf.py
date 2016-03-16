@@ -168,11 +168,13 @@ def simulate_family(output, haps, num_de_novo_mutations=0):
             while (hap, pos) in de_novo_muts:
                 hap = rng(0, 1)
                 pos = rng(0, len(childhaps[0]))
-            if childhaps[hap][i] == "0":
-                childhaps[hap][i] = "1"
+            if childhaps[hap][pos] == "0":
+                childhaps[hap][pos] = "1"
             else:
-                childhaps[hap][i] = "0" 
-            f.write("de novo mutation at\t" + str(hap) + "," + str(pos) + "\n")
+                childhaps[hap][pos] = "0" 
+            f.write("de novo mutation at\t" + str(hap) + "," +
+                    " POS = " + str(snp_identity_hash[pos]["snp_pos"]) +
+                    " ID = " + str(snp_identity_hash[pos]["snp_id"]) + "\n");
             de_novo_muts.add((hap, pos))
 
         # simulate gene conversion
