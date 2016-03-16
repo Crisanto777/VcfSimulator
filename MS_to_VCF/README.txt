@@ -7,3 +7,8 @@ where we make 4 haplotypes that each contain 500 alleles.
 
 Note that it expects at least 4 haplotypes in the file in order to simulate
 a family. If more than 4 is provided, it only takes the first 4.
+
+
+This can be run with the command
+
+python ms_to_vcf.py -i ../data/<filename.txt> -o ../output
