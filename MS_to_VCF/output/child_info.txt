@@ -1,0 +1,4 @@
+de novo mutation at	1,15
+de novo mutation at	1,336
+father index: 1
+mother index: 3

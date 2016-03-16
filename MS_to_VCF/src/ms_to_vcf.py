@@ -30,8 +30,8 @@ def load_haps(filename):
                         if line.split()[0] == "positions:":
                             start_processing = True
                     except:
-                        #empty lines will throw an exception here
-                        #we ignore this
+                        # empty lines will throw an exception here
+                        # we ignore this
                         pass
     return haps
 
@@ -64,7 +64,7 @@ def writeVcf(path, genome_name, snp_identity_hash, hapseq1, hapseq2):
             f.write("##FORMAT=<ID=GQ,Number=1,Type=Integer,Description=\"Genotype Quality\">\n")
             f.write("##FORMAT=<ID=DP,Number=1,Type=Integer,Description=\"Read Depth\">\n")
             f.write("##FORMAT=<ID=HQ,Number=2,Type=Integer,Description=\"Haplotype Quality\">\n")
-            f.write("#CHROM POS    ID    REF ALT    QUAL FILTER INFO    FORMAT\t" + genome_name + "\n")
+            f.write("#CHROM POS\tID\tREF\tALT\tQUAL FILTER INFO\tFORMAT\t" + genome_name + "\n")
 
             # header is written. Now we generate the data
 
@@ -99,24 +99,15 @@ def generateVcfRow(chrom_num, snp_pos, id, ref, alt, hap1, hap2):
                       + "1" + ":" 
                       + "51,51")
 
-    new_row_string = (chrom_num + "\t" 
-            + snp_pos + "\t"
-            + my_id + "\t"
-            + ref + "\t"
-            + alt + "\t"
-            + qual + "\t"
-            + my_filter + "\t"
-            + info + "\t"
-            + my_format + "\t"
-            + formatted_info + "\n")
+    row_data = [chrom_num, snp_pos, my_id, ref, alt, qual, my_filter, info, my_format, formatted_info]
+    return "\t".join(row_data) + "\n"
 
-    return new_row_string
 
 def generate_snp_identity_hash_entry(chrom_num, rand_num):
     snp_info = {}
     snp_info["chrom_num"] = str(chrom_num)
     snp_info["snp_pos"] = rand_num
-    snp_info["snp_id"] = "rs" + str(rand_num * 18)
+    snp_info["snp_id"] = "rs" + str(rand_num * 7)
     snp_info["variant"] = simulate_variants()
     
     return snp_info
@@ -124,8 +115,8 @@ def generate_snp_identity_hash_entry(chrom_num, rand_num):
 def simulate_variants():
     option_list = ["A", "C", "T", "G"]
 
-    del option_list[random.randint(0,3)]
-    del option_list[random.randint(0,2)]
+    del option_list[random.randint(0, 3)]
+    del option_list[random.randint(0, 2)]
 
     return option_list
 
@@ -142,8 +133,8 @@ def simulate_family(output, haps, num_de_novo_mutations=0):
     chromosome_num = 1
     for i in xrange(len(haps[0])):
 
-        #if you want to switch chromosomes, you can handle it here
-        #ie if i > thresh chrom = chrom + 1
+        # if you want to switch chromosomes, you can handle it here
+        # ie if i > thresh chrom = chrom + 1
         snp_identity_hash[i] = generate_snp_identity_hash_entry(chromosome_num, curr_snp_num)
         curr_snp_num = curr_snp_num + rng(0, 1000)
         
@@ -158,11 +149,11 @@ def simulate_family(output, haps, num_de_novo_mutations=0):
     writeVcf(output, "NA0002", snp_identity_hash, haps[2], haps[3])
 
     # it then simulates a child by choosing one haplotype from the father and one from the mother
-    c1_index = rng(0,1) 
-    c2_index = rng(2,3) 
+    c1_index = rng(0, 1) 
+    c2_index = rng(2, 3) 
     childhaps = [list(haps[c1_index]), list(haps[c2_index])]
 
-    #record events in a file so that we can verify the accuracy of any inference methods
+    # record events in a file so that we can verify the accuracy of any inference methods
     child_changes = ("father index: " + str(c1_index) + "\n"
                      + "mother index: " + str(c2_index) + "\n")
 
@@ -172,17 +163,17 @@ def simulate_family(output, haps, num_de_novo_mutations=0):
         # simulate de novo mutations
         de_novo_muts = set()
         for i in xrange(num_de_novo_mutations):
-            hap = rng(0,1)
+            hap = rng(0, 1)
             pos = rng(0, len(childhaps[0]))
-            while (hap,pos) in de_novo_muts:
-                hap = rng(0,1)
+            while (hap, pos) in de_novo_muts:
+                hap = rng(0, 1)
                 pos = rng(0, len(childhaps[0]))
             if childhaps[hap][i] == "0":
                 childhaps[hap][i] = "1"
             else:
                 childhaps[hap][i] = "0" 
             f.write("de novo mutation at\t" + str(hap) + "," + str(pos) + "\n")
-            de_novo_muts.add((hap,pos))
+            de_novo_muts.add((hap, pos))
 
         # simulate gene conversion
         # simulate crossover event
