@@ -1,0 +1,1 @@
+-i ../data/500_variants.txt -o ../output -phased False -blockfile True -blockdensity 5
