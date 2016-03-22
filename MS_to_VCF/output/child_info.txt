@@ -1,4 +1,4 @@
-de novo mutation at	0, POS = 5827 ID = rs40789
-de novo mutation at	0, POS = 54992 ID = rs384944
-father index: 1
+de novo mutation at	1, POS = 61551 ID = rs430857
+de novo mutation at	1, POS = 113849 ID = rs796943
+father index: 0
 mother index: 3
